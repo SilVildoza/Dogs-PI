@@ -1,0 +1,146 @@
+.bgImg {
+  background-image: url("https://www.itl.cat/pngfile/big/244-2440000_wallpaper-of-dog-flower-pet-samoyed-stare-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 80vw;
+  background-position: center;
+  background-position-y: bottom;
+  background-color: none;
+
+}
+/* .landing-cont {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.full-pg {
+  width: 100%;
+    height: 100%;
+    background: url("https://i.imgur.com/GZgOtZV.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    margin: 0;
+    top: 0;
+} */
+/* .full-inner {
+  width: 100%;
+  vertical-align: middle;
+  display:table-cell;
+} */
+.contenido {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+      font-family: 'Poppins', sans-serif;
+
+}
+.contenido h1 {
+  color: white;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+.contenido .titulo {
+  font-size: 45px;
+    text-transform: none;
+    color: #FF4C29;
+}
+
+/* .titulo {
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  text-align: left;
+  color: #082032;
+  padding-top: 90px;
+  padding-left: 100px;
+  margin-top: 0;
+} */
+
+.entrar {
+  font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        width: 150px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: white;
+        background-color: #082032;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 0 #dc3d4b;
+        transition: ease-out 0.3s;
+        font-size: 1rem;
+}
+.entrar:hover {
+  box-shadow: inset 0 300px 0 0 #dc3d4b;
+  cursor: pointer;
+  color: #082032;
+
+
+}
+  /* font-size: 70px;
+  position: absolute;
+  right: 150vh;
+  top: 250px;
+  font-size: 25px;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0);
+  padding-top: px;
+  color: #082032;
+  border-radius: 50px;
+  border-color: transparent;
+  cursor: pointer;
+
+  animation-name: parpadeo;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name: parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+} */
+
+/* @-moz-keyframes parpadeo {
+  0% {
+    opacity: 1.0;
+  }
+
+  50% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@-webkit-keyframes parpadeo {
+  0% {
+    opacity: 1.0;
+  }
+
+  50% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1.0;
+  }
+
+  50% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+} */

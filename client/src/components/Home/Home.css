@@ -1,0 +1,149 @@
+.select-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    border: 0 !important;
+    background: #dc3d4b;
+    background-image: none;
+}
+
+option {
+    font-weight: 300;
+    color: white;
+}
+
+::placeholder {
+    color: black;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    margin: 20px;
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .10em;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.1);
+}
+
+.select2 {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .10em;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+
+select {
+    flex: 1;
+    padding: 0 .5em;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #082032;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    overflow: hidden;
+}
+
+.select:hover::after {
+    color: #dc3d4b;
+}
+
+.select2::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #082032;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    overflow: hidden;
+}
+
+.select2:hover::after {
+    color: #dc3d4b;
+}
+
+@media only screen and (max-width: 880px) {
+    .select2 {
+        margin-right: 20px;
+
+    }
+
+    .select {
+        margin-right: 20px;
+
+    }
+}
+
+@media only screen and (max-width: 750) {
+    .select2 {
+        margin-right: 20px;
+    }
+
+    .select {
+
+        margin-right: 20px;
+
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .select2 {
+        z-index: -1;
+        margin-right: 20px;
+
+    }
+
+    .select {
+        z-index: -1;
+        margin-right: 20px;
+
+    }
+}
+.cartitas {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.reload {
+    color: white;
+    background-color: #082032;
+}
