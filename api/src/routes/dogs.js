@@ -1,8 +1,10 @@
-const { Router } = require ("express");
+//const { Router } = require ("express");
 const { Dog, Temperament } = require("../db");
-const router = Router();
+//const router = Router();
 const { getAllDogs } = require("../controlador")
 const axios = require ("axios");
+var express = require("express");
+var router = express.Router();
 
 
 
@@ -35,7 +37,7 @@ try{
             (dog.id) === parseInt(id))
         dogId.length?
         res.status(200).json(dogId):
-        res.status(404).send('Dog not found')
+        res.status(400).send('Dog not found')
     }
     }
     catch(error){

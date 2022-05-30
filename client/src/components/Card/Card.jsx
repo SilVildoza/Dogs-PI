@@ -1,11 +1,7 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
-// import {Link} from "react-router-dom";
-// import { getById } from '../../store/actions/index';
 import './Card.css';
 
 export default function Card({name,image,temperament,weight}){
-   // const dispatch = useDispatch();
 
     if(!temperament){
         temperament = "None"
@@ -13,12 +9,12 @@ export default function Card({name,image,temperament,weight}){
 
     return (
         <>
-        <div class="flip-card-container" >
-            <div class="flip-card">
-                <div class="card-front">
+        <div className="flip-card-container" >
+            <div className="flip-card">
+                <div className="card-front">
 
                 <figure>
-                    <div class="img-bg"></div>
+                    <div className="img-bg"></div>
                         <img src={image} alt="img not found" />
                         <figcaption>{name}</figcaption>
                 </figure>
@@ -28,48 +24,26 @@ export default function Card({name,image,temperament,weight}){
                 </ul>
                 </div>
 
-                <div class="card-back">
+                <div className="card-back">
                     <figure>
-                        <div class="img-bg"></div>
+                        <div className="img-bg"></div>
                         <img src={image} alt="img not found" />
                     </figure>
                         <button>See More</button>
-                    {/* <Link to={`/home/:${id}`} onClick={()=>dispatch(getById(id))}>
-                    </Link> */}
                     
-                    <div class="design-container">
-                        <span class="design design--1"></span>
-                        <span class="design design--2"></span>
-                        <span class="design design--3"></span>
-                        <span class="design design--4"></span>
-                        <span class="design design--5"></span>
-                        <span class="design design--6"></span>
-                        <span class="design design--7"></span>
-                        <span class="design design--8"></span>
+                    <div className="design-container">
+                        <span className="design design--1"></span>
+                        <span className="design design--2"></span>
+                        <span className="design design--3"></span>
+                        <span className="design design--4"></span>
+                        <span className="design design--5"></span>
+                        <span className="design design--6"></span>
+                        <span className="design design--7"></span>
+                        <span className="design design--8"></span>
                     </div>
                 </div>
             </div>
         </div>
-        {/* <div className='card-container'>
-        <img className='img-card' src={image} alt={name}/>
-        <div className='card-info'>
-        <h3 className='name-txt'>{name}</h3>
-        <div className='card-info-text'>
-        <h5 className='info-txt'>Temperaments: </h5>
-        <span className='info-txt'>{temperament}</span>
-        <h5 className='info-txt'>Weight: </h5>
-        <span className='info-txt'>{weight} kg</span>
-        </div>
-        </div>
-        </div> */}
-        </>
-        // <li className='format'>
-        //     <h3 className='name'>{name}</h3>
-        //     <img className='image' src={image} alt={name}/>
-        //     <h5>Temperaments: </h5>
-        //     <span>{temperament}</span>
-        //     <h5>Weight: </h5>
-        //     <span>{weight} kg</span>
-        // </li>
+        </>       
     )
 }
