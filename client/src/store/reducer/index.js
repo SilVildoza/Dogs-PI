@@ -1,4 +1,4 @@
-import { GET_DOGS, GETBYNAME, GET_BY_ID, GET_TEMPERAMENTS,POST_DOG, FILTER_TEMPERAMENTS, ORDER_FILTER, RACE_FILTER, CLEAN } from "../actions/index";
+import { GET_DOGS, GETBYNAME, GET_BY_ID, GET_TEMPERAMENTS,POST_DOG, FILTER_TEMPERAMENTS, ORDER_FILTER, RACE_FILTER } from "../actions/index";
 
 const initialState = {
     dogs: [],
@@ -116,26 +116,7 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 dogs: sorted,
-            };
-            // case SORT_BY_WEIGHT:
-            //     let dogsWeight;
-            //     if(action.payload === 'allW'){
-            //         dogsWeight = state.dogs;
-            //     }
-            //     if(action.payload === 'desW'){
-            //         dogsWeight = state.dogs.sort(function(a, b){
-            //             return weightA(b) - weightB(a)
-            //         })
-            //     };
-            //     if(action.payload === 'ascW'){
-            //         dogsWeight = state.dogs.sort(function(a,b){
-            //             return weightB(a) - weightA(b) 
-            //         })
-            //         };    
-            //     return {
-            //         ...state,
-            //         dogs: dogsWeight,
-            //     };        
+            };    
         case RACE_FILTER:
             let dogs = state.copiaDogs;
             let raceFilter;
@@ -152,10 +133,10 @@ function rootReducer(state = initialState, action){
                 ...state,
                 dogs: raceFilter
             }
-        case CLEAN:
-            return {
-                ...state,
-            };
+        // case CLEAN:
+        //     return {
+        //         ...state,
+        //     };
         default:
             return state;
     }

@@ -7,24 +7,15 @@ import './Details.css';
 
 
 export default function Details(props){
-    //const id = props.match.params.id;
     const { id } = useParams();
     const dispatch = useDispatch();
     useEffect(()=>{
-        //dispatch(clean());
         dispatch(getById(id));
     },[dispatch,id]);
     const detailDog = useSelector(state=>state.detail);
     
     console.log(detailDog)
    
-    // if(!detailDog.temperament){
-    //     detailDog.temperament="None"
-    // }
-
-    // if(id !== detailDog.id){
-    //     return <h1>Loading...</h1>
-    // }else{
     return (
         <>
         <Nav />
@@ -36,8 +27,7 @@ export default function Details(props){
                     <h2 class="card-title">{detailDog[0].name}</h2>
                     <img 
                     src={detailDog[0].image}
-                    alt='img not found'
-                    
+                    alt='img not found'                    
                     />
                 <div class="card-desc">
                     <h4>Temperaments:</h4>
@@ -50,20 +40,12 @@ export default function Details(props){
                     <p>{detailDog[0].weight} kg</p>
                     <br/>
                     <h4>Life Span:</h4>
-                    <p>{detailDog[0].lifeSpan}</p>
-                    {/* <li>
-                    </li>
-                    <li>
-                    </li>
-                    <li>
-                    </li> */}
+                    <p>{detailDog[0].lifeSpan}</p>                    
                 </div>
-                </div>
-                
+                </div>               
             </div>
             }
         </div>
         </>
     )
-    //}
 }

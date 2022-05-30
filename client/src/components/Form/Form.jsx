@@ -99,9 +99,7 @@ export default function Form(){
                     <div className="input-field">
                     <label>Name</label>
                       <input placeholder="Name of the breed..." className="input" type="text" name="name" value={newBreed.name} onChange={handleChange} autoComplete="off" required/>
-                      {/* <div className="h2e">
-                      {errors.name && <p className="error">{errors.name}</p>}
-                      </div> */}
+                      
                       <br />
                         { errors.name && 
                             <span className="error">{errors.name}</span>
@@ -142,9 +140,7 @@ export default function Form(){
                     <div className="input-field">
                         <label>Min Life Span: </label>
                         <input className="input" placeholder="Minimum life span of the breed..." type="number" name="yearsMin" value={newBreed.yearsMin} onChange={handleChange} autoComplete="off" />
-                        {/* <div className="h2e">
-                            {errors.years && (<p className="error">{errors.years}</p>)}
-                        </div> */}
+                        
                         <br />
                         { errors.years && 
                             <span className="error">{errors.years}</span>
@@ -153,9 +149,7 @@ export default function Form(){
                     <div className="input-field">
                         <label>Max Life Span: </label>
                         <input className="input" placeholder="Maximum life span of the breed..." type="number" name="yearsMax" value={newBreed.yearsMax} onChange={handleChange} autoComplete="off" />
-                        {/* <div className="h2e">
-                            {errors.years && (<p className="error">{errors.years}</p>)}
-                        </div> */}
+                        
                         <br />
                         { errors.years && 
                             <span className="error">{errors.years}</span>
@@ -164,9 +158,7 @@ export default function Form(){
                     <div className="input-field">
                       <label>Picture</label>
                       <input className="input" placeholder="Add an image URL for your breed..." type="url" name="image" onChange={handleChange} value={newBreed.image} autoComplete="off" />
-                      {/* <div className="h2e">
-                          {errors.image && (<p className="error">{errors.image}</p>)}
-                      </div> */}
+                      
                       <br />
                         { errors.image && 
                             <span className="error">{errors.image}</span>

@@ -1,79 +1,4 @@
-/* .image{
-    border-radius: 10px;
-    width: 15vw;
-    height: 20vh;
 
-}
-
-.format{
-    list-style: none;
-    font-size: 1rem;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color:rgba(252, 245, 245, 0.596);
-    border-radius: 10px;
-
-}
-
-.name{
-    font-size: 1.3rem;
-    text-align: center;
-    padding-top: 2rem;
-} */
-/* .card-container {
-    width: 260px;
-    height: 350px; 
-    margin:0.7rem;
-    background-color: #082032;
-    border-radius: 3px;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-
-}
-
-.img-card{
-    height: 200px;
-    max-width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.card-info-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-    padding: 1px;
-    background-color: #dc3d4b;
-    color:white;
-    max-width: 240px;
-    height: 23px;
-    width: 240px;
-    margin: -12px;
-    border-radius: 3px;
-    white-space:pre;
-    text-overflow: ellipsis;
-}
-
-.name-txt {
-    white-space:pre;
-    display: inline-block;
-    text-overflow: ellipsis;
-    max-height: 2px;
-    color:#dc3d4b;
-    margin: -1px;
-    font-size: 16px;
-}
-.card-container:hover {
-    transform: scale(1.05);
-    transition: transform .08s ease-in-out;
-}
-.info-txt {
-    display: inline-flex;
-    color: white;
-} */
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
@@ -85,21 +10,6 @@
   box-sizing: border-box;
 }
 
-/* body */
-/* body {
-  min-height: 100vh;
-  padding: 40px;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
-  background: hsl(220, 10%, 12%);
-  font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
-} */
-
-/* .flip-card-container */
 .flip-card-container {
   --hue: 350;
   --primary: hsl(var(--hue), 50%, 50%);
@@ -221,18 +131,11 @@ figcaption {
 
 .card-front .img-bg::before {
   content: "";
-
-  /* position: absolute;
-  top: 44%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(18deg); */
-
   width: 100%;
   height: 6px;
   border: 1px solid var(--primary);
   border-left-color: transparent;
   border-right-color: transparent;
-
   transition: .1s;
 }
 
@@ -268,10 +171,8 @@ li {
   width: 100%;
   margin-top: 12px;
   padding-bottom: 12px;
-
   font-size: 14px;
   text-align: center;
-
   position: relative;
 }
 
@@ -281,14 +182,11 @@ li:nth-child(2n) {
 
 li:not(:last-child)::after {
   content: "";
-
   position: absolute;
   bottom: 0;
   left: 0;
-
   width: 100%;
   height: 1px;
-
   background: currentColor;
   opacity: .2;
 }
@@ -298,15 +196,12 @@ button {
   font-family: inherit;
   font-weight: bold;
   color: var(--white-1);
-
   letter-spacing: 2px;
-
   padding: 9px 20px;
   border: 1px solid #dc3d4b;
   border-radius: 1000px;
   background: transparent;
   transition: .3s;
-
   cursor: pointer;
 }
 
@@ -328,22 +223,18 @@ button:active {
 
   width: 100%;
   height: 100%;
-
   background: transparent;
   position: absolute;
   top: 0;
   left: 0;
-
   pointer-events: none;
 }
 
 /* .design */
 .design {
   display: block;
-
   background: var(--grey);
   position: absolute;
-
   opacity: var(--op);
   transition: .3s;
 }

@@ -14,7 +14,7 @@ export default function Home(){
     const [currentPage, setCurrentPage] = useState(1);
     const [orden, setOrden] = useState("");
     const [dogsPerPage, setDogsPage] = useState(8);
-    //const [orderW, setOrderW] = useState('');
+    
     //
     /**
      * El índice del último perro es: la página actual (Default: 1), por la cantidad de perros por página (Default: 9).
@@ -28,8 +28,8 @@ export default function Home(){
     //||||||||||||||||||||||||||||||||||||||||||||||||
     /**
      * La constante agarra solo las porciones que estan marcadas en los parámetros, que serían el índice del primer perro (0), hasta el índice del último perro (9), por lo tanto quedarían solo 9 perros por página. Renderizando desde el perro numero 0 hasta el perro numero 8, siendo 9 perros en total. Magic.
-     * PÁGINA 1 -> Primer perro 0 <---> Último perro 8.
-     * PÁGINA 2 -> Primer perro 9 <---> Último perro 17.
+     * PÁGINA 1 -> Primer perro 0 <---> Último perro 7.
+     * PÁGINA 2 -> Primer perro 8 <---> Último perro 16.
      */
     const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
     //+
@@ -53,15 +53,6 @@ export default function Home(){
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
-//   function handleSortByWeight(e){
-//     e.preventDefault();
-//     dispatch(sortByWeight(e.target.value));
-//     setCurrentPage(1);
-//     setOrderW(`${e.target.value}`);
-//     e.target.value ='default';
-//     setOrden(`${e.target.value}`);
-
-// }
 
   const handleFilterTemperament = (e) => {
     console.log(e.target.value);
@@ -97,15 +88,7 @@ export default function Home(){
                     <option value="HIGH" >Heavier</option>
                     <option value="LESS">Lighter</option>
                 </select>
-              </div>
-              {/* <div className='select'>
-
-              <select onChange={(e)=> handleSortByWeight(e)} defaultValue="default">
-                <option value="default" disabled="disabled">Sort by Weight</option>
-                <option value="ascW" key="ascW">Heavier</option>
-                <option value="desW" key="desW">Lighter</option>
-            </select>
-              </div> */}
+              </div>            
                 <div className='select'>
                 <select onChange={(e) => handleFrom(e)} defaultValue="default">
                     <option value='default' disabled='disabled'>Filter by breeds</option>
