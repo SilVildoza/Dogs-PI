@@ -16,18 +16,14 @@ const getApiInfo = async () => {
             height: el.height.metric,
             weight: el.weight.metric,
             image: el.image.url,
-            //image: "https://cdn2.thedogapi.com/images/" + el.reference_image_id + ".jpg" ,
-        //     temperament: [el.temperament]
-        //     .join()
-        //    .split(",")
-        //     .map((el) => el.trim()),
+            
         }
     });
     return apiInfo;
 };
 
 const getDbInfo = async () => {
-    //return
+   
     let myDB = await Dog.findAll({
         include:{
             model: Temperament,

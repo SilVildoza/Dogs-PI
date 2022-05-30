@@ -16,24 +16,6 @@ module.exports = (sequelize) => {
         notEmpty: true
       }
     },
-    // minweight: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
-
-    // maxweight: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
-
-    // minheight: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
-    // maxheight: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
     height: {
       type: DataTypes.STRING,
       allowNull: false

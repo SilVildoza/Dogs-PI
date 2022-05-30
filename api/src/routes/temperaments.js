@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const axios = require ("axios");
 const {Temperament} = require('../db');
-//const { API_KEY } = process.env;
 const { URL_DOG } = require("../urls");
 
 const router = Router();
