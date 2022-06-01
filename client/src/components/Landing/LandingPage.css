@@ -5,7 +5,7 @@
   position: absolute;
   width: 100vw;
   height: 80vw;
-  background-position: center;
+  background-position: center center;
   background-position-y: bottom;
   background-color: none;
 
@@ -52,4 +52,19 @@
   color: #082032;
 
 
+}
+
+@media screen and (max-width:1920px){
+  /* bgImg {
+
+  } */
+}
+@media screen and (max-width:1280px){
+  
+}
+@media screen and (max-width:800px){
+  
+}
+@media screen and (max-width:4800px){
+  
 }

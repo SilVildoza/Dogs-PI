@@ -146,4 +146,6 @@ select {
 .reload {
     color: white;
     background-color: #082032;
+    margin-left: 5px;
+    margin-right: 5px;
 }

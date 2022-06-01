@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Home.css';
 
 export default function Home(){
-    const dispatch = useDispatch();
-    const dogs = useSelector((state) => state.dogs);
+    //*Los Hooks son algunas herramientas adicionales de React que nos permiten trabajar con componentes de funciones. Estos se encargan de copiar todos los recursos que tienen los componentes de clase pero en los de funciones.
+    const dispatch = useDispatch();  //Esta función se iguala a una constante. Esta constante ahora será la palabra clave cuando queramos despachar una función. Es decir que, contrariamente a useSelector, esta función la usaremos sólo cuando queramos despachar acciones y no necesitemos mostrar información del estado.
+    const dogs = useSelector((state) => state.dogs); // useSelector: Esta función nos permite consumir información del estado del componente, la usaremos sólo cuando queramos mostrar información del estado pero no querer despachar acciones. Esta función es comparable con mapStateToProps.
     const temperaments = useSelector((state) => state.temperaments);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [orden, setOrden] = useState("");
-    const [dogsPerPage, setDogsPage] = useState(8);
+    const [currentPage, setCurrentPage] = useState(1); // useState Nos permite guardar estados en los componentes de funciones. devuelve un arreglo con dos valores. El primero es una variable con el valor del estado y el segundo es una función que se usa para modificar el estado.
+    const [/* orden */, setOrden] = useState("");
+    const [dogsPerPage, /* setDogsPage */] = useState(8);
     
     //
     /**
@@ -33,10 +34,11 @@ export default function Home(){
      */
     const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
     //+
+    
     const paginado = (pageNumber) => {
       setCurrentPage(pageNumber);
     };
-  useEffect(() => {
+  useEffect(() => {  //useEffect: Esta función viene a reemplazar las funciones del ciclo de vida de los componentes de clase.
     dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
@@ -52,17 +54,21 @@ export default function Home(){
     dispatch(orderFilter(e.target.value));
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
+    e.target.value = 'default'
   }
 
   const handleFilterTemperament = (e) => {
     console.log(e.target.value);
     dispatch(filterTemperaments(e.target.value));
     setCurrentPage(1);
+    e.target.value = 'default'
   };
 
   function handleFrom(e) {
     e.preventDefault();
     dispatch(raceFilter(e.target.value));
+    setCurrentPage(1);
+    e.target.value = 'default'
   }
     return (
         <div>
@@ -76,7 +82,7 @@ export default function Home(){
                 }}>
                 Reload
              </button>
-            
+             <Link to='/' ><button className='reload'><span>Welcome Page</span></button></Link> 
             </div>
             <div className='select-container'>
               <div className='select'>
@@ -131,7 +137,7 @@ export default function Home(){
               </div>
                 );
              })}
-            
+           
         </div>    
         
     )

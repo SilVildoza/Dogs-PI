@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+//import { useHistory } from "react-router-dom";
 import { postDog, getTemperaments } from "../../store/actions";
 import Nav from "../Nav/Nav";
 import './Form.css';
@@ -11,28 +12,61 @@ function validate(newBreed){
     } else if(parseInt(newBreed.name)){
         errors.name = 'Numbers are not allowed in the name'
     }
-    if(newBreed.heightMin && newBreed.heightMin <= 0){
+    if(!newBreed.heightMin){
+        errors.numberMinHeight = 'Min height is required'
+    } else if(newBreed.heightMin && newBreed.heightMin <= 0){
         errors.numberMinHeight = 'The Minimun height should be higher than 0!'
+    }else if(newBreed.heightMin && newBreed.heightMin > 500){
+        errors.numberMinHeight = `${newBreed.heightMin} cm is a weird min height`
     }
-    if(newBreed.heightMax && (newBreed.heightMax > 500 || parseInt(newBreed.heightMin) > parseInt(newBreed.heightMax))){
+    if(!newBreed.heightMax){
+        errors.numberMaxheight = 'Max height is required'
+    }else if(newBreed.heightMax && (newBreed.heightMax <= 0 )){
+        errors.numberMaxheight = 'The Maximun height should be higher than 0!'
+    }else if(parseInt(newBreed.heightMin) > parseInt(newBreed.heightMax)){
+        errors.numberMaxheight = 'Max height must be higher than min height'
+    }else if(newBreed.heightMax > 500){
         errors.numberMaxheight = `${newBreed.heightMax} cm is a weird height for a dog!`
     }
-    if(newBreed.weightMin && newBreed.weightMin <= 0){
+    if(!newBreed.weightMin){
+        errors.numberMinWeight = 'Min weight is required'
+    }else if(/* newBreed.weightMin && */ newBreed.weightMin <= 0){
         errors.numberMinWeight = 'The Minimun weight should be higher than 0!'
+    }else if(/* newBreed.weightMin &&  */newBreed.weightMin > 200){
+        errors.numberMinWeight = `${newBreed.weightMin} kg is a weird min weight`
     }
-    if(newBreed.weightMax && (newBreed.weightMax > 500 || parseInt(newBreed.weightMin) > parseInt(newBreed.weightMax))){
+    if(!newBreed.weightMax){
+        errors.numberMaxweight = 'Max weight is required'
+    }else if(/* newBreed.weightMax && */ (newBreed.weightMax <= 0 )){
+        errors.numberMaxweight = 'The Maximun weight should be higher than 0!'
+    }else if(/* newBreed.weightMax && */ (newBreed.weightMax > 300)){
         errors.numberMaxweight = `${newBreed.weightMax} kg is a weird weight for a dog!`
+    }else if(parseInt(newBreed.weightMin) > parseInt(newBreed.weightMax)){
+        errors.numberMaxweight = 'Max weight must be higher than min weight'
     }
     if(!newBreed.image){
-        errors.image = 'Image required'
+        errors.image = 'Image is required'
+    }else if(newBreed.image.length>255){
+        errors.image = 'The link cannot exceed 255 characters'
     }
-    if(!newBreed.yearsMin || !newBreed.yearsMax){
-        errors.years = 'Life Span is required'
-    }else if(newBreed.yearsMin < 1 || newBreed.yearsMax >20){
-        errors.years = 'Write a number beetween 1 - 20'
+    if(!newBreed.yearsMin){
+        errors.yearsMin = 'Life Span is required'
+    }else if(newBreed.yearsMin < 1 || newBreed.yearsMin >20){
+        errors.yearsMin = 'Write a number beetween 1 - 20'
     }
+    if(!newBreed.yearsMax){
+        errors.yearsMax = 'Life Span is required'
+    }else if(newBreed.yearsMax < 1 || newBreed.yearsMax >20){
+        errors.yearsMax = 'Write a number beetween 1 - 20'
+    }else if(newBreed.yearsMin >= newBreed.yearsMax){
+        errors.yearsMax = 'Max life span must be higher than min life span'
+    }/* else if(isNaN(parseInt(newBreed.yearsMax))){
+        errors.yearsMax = 'Life Span should be a number'
+    } */
     if(!newBreed.temperaments){
         errors.temperaments = 'At least 1 temperament ir required'
+    }else if(newBreed.temperaments.length > 8){
+        errors.temperaments = 'Wow, so many temperaments! delete some'
     }
     return errors
 }
@@ -41,6 +75,7 @@ export default function Form(){
     const dispatch = useDispatch();
     const temperaments = useSelector(state => state.temperaments);
     const [errors, setErrors] = useState({});
+    //const history = useHistory();
 
     console.log(newBreed)
     useEffect(()=>{
@@ -85,6 +120,7 @@ export default function Form(){
         }else{
             alert("Oops, there seems to be a problem. Check the data")
         }
+        //history.push('/home')
     };
 
 
@@ -142,8 +178,8 @@ export default function Form(){
                         <input className="input" placeholder="Minimum life span of the breed..." type="number" name="yearsMin" value={newBreed.yearsMin} onChange={handleChange} autoComplete="off" />
                         
                         <br />
-                        { errors.years && 
-                            <span className="error">{errors.years}</span>
+                        { errors.yearsMin && 
+                            <span className="error">{errors.yearsMin}</span>
                         } 
                     </div>
                     <div className="input-field">
@@ -151,8 +187,8 @@ export default function Form(){
                         <input className="input" placeholder="Maximum life span of the breed..." type="number" name="yearsMax" value={newBreed.yearsMax} onChange={handleChange} autoComplete="off" />
                         
                         <br />
-                        { errors.years && 
-                            <span className="error">{errors.years}</span>
+                        { errors.yearsMax && 
+                            <span className="error">{errors.yearsMax}</span>
                         } 
                     </div>
                     <div className="input-field">
@@ -190,7 +226,7 @@ export default function Form(){
                         </div>
                     </div>
                     <div className="input-field">
-                     <button className="input" type="submit">
+                     <button className="input" type="submit" /* disabled={errors.name || errors.numberMinHeight || errors.numberMaxheight || errors.numberMinWeight || errors.numberMaxweight} */>
                      <span>SUBMIT</span>
                      </button>
                    </div>

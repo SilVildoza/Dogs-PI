@@ -7,7 +7,7 @@ export const POST_DOG = "POST_DOG";
 export const FILTER_TEMPERAMENTS = "FILTER_TEMPERAMENTS";
 export const ORDER_FILTER = "ORDER_FILTER";
 export const RACE_FILTER = "RACE_FILTER";
-//export const CLEAN = "CLEAN";
+export const CLEAN = "CLEAN";
 
 export function getDogs(){
     return async function (dispatch){
@@ -112,9 +112,8 @@ export function raceFilter(payload){
     }
 }
 
-// export function clean(payload){
-//     return {
-//         type: CLEAN,
-//         payload
-//     }
-// }
+export function clean(){
+    return {
+        type: CLEAN,
+    }
+}

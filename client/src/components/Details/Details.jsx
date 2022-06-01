@@ -1,20 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect/* , useState */ } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getById } from "../../store/actions/index";
+import { useHistory, useParams } from "react-router-dom";
+import { getById, clean } from "../../store/actions/index";
 import Nav from "../Nav/Nav";
 import './Details.css';
+//import { Link } from "react-router-dom";
 
 
 export default function Details(props){
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
+    //const [/* cambio */, setCambio]= useState(false)
     useEffect(()=>{
-        dispatch(getById(id));
+        //dispatch(clean())
+        dispatch(getById(id)); // sin return se monta
+        //setCambio(true)
+        return () => {  //con return se desmonta
+            dispatch(clean()) //Para que nuestra función se comporte como un componentWillUnmount() tendremos que usar, en el cuerpo de la función, la palabra return. Lo que tenemos que retornar es otra función. Es esta función la que se ejecutará cuando el componente se este por desmontar del DOM.
+        }
     },[dispatch,id]);
     const detailDog = useSelector(state=>state.detail);
     
-    console.log(detailDog)
+    //console.log(detailDog)
    
     return (
         <>
@@ -46,6 +54,13 @@ export default function Details(props){
             </div>
             }
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        {/* <Link to="/home">
+        </Link> */}
+        <button className="back" onClick={() => history.goBack()}>BACK</button>
         </>
     )
 }
