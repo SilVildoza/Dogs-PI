@@ -16,16 +16,16 @@ function validate(newBreed){
         errors.numberMinHeight = 'Min height is required'
     } else if(newBreed.heightMin && newBreed.heightMin <= 0){
         errors.numberMinHeight = 'The Minimun height should be higher than 0!'
-    }else if(newBreed.heightMin && newBreed.heightMin > 500){
+    }else if(newBreed.heightMin && newBreed.heightMin > 150){
         errors.numberMinHeight = `${newBreed.heightMin} cm is a weird min height`
     }
     if(!newBreed.heightMax){
         errors.numberMaxheight = 'Max height is required'
     }else if(newBreed.heightMax && (newBreed.heightMax <= 0 )){
         errors.numberMaxheight = 'The Maximun height should be higher than 0!'
-    }else if(parseInt(newBreed.heightMin) > parseInt(newBreed.heightMax)){
+    }else if(parseInt(newBreed.heightMin) >= parseInt(newBreed.heightMax)){
         errors.numberMaxheight = 'Max height must be higher than min height'
-    }else if(newBreed.heightMax > 500){
+    }else if(newBreed.heightMax > 200){
         errors.numberMaxheight = `${newBreed.heightMax} cm is a weird height for a dog!`
     }
     if(!newBreed.weightMin){
@@ -41,7 +41,7 @@ function validate(newBreed){
         errors.numberMaxweight = 'The Maximun weight should be higher than 0!'
     }else if(newBreed.weightMax > 300){
         errors.numberMaxweight = `${newBreed.weightMax} kg is a weird weight for a dog!`
-    }else if(parseInt(newBreed.weightMin) > parseInt(newBreed.weightMax)){
+    }else if(parseInt(newBreed.weightMin) >= parseInt(newBreed.weightMax)){
         errors.numberMaxweight = 'Max weight must be higher than min weight'
     }
     // if(!newBreed.image){
@@ -54,14 +54,14 @@ function validate(newBreed){
     }
     if(newBreed.yearsMax < 1 || newBreed.yearsMax >20){
         errors.yearsMax = 'Write a number beetween 1 - 20'
-    }else if(newBreed.yearsMin >= newBreed.yearsMax){
+    }else if(parseInt(newBreed.yearsMin) >= parseInt(newBreed.yearsMax)){
         errors.yearsMax = 'Max life span must be higher than min life span'
     }
-    if(!newBreed.temperaments){
+    /* if(!newBreed.temperaments){
         errors.temperaments = 'At least 1 temperament ir required'
     }else if(newBreed.temperaments.length > 8){
         errors.temperaments = 'Wow, so many temperaments! delete some'
-    }
+    } */
     return errors
 }
 export default function Form(){
