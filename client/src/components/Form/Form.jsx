@@ -30,39 +30,33 @@ function validate(newBreed){
     }
     if(!newBreed.weightMin){
         errors.numberMinWeight = 'Min weight is required'
-    }else if(/* newBreed.weightMin && */ newBreed.weightMin <= 0){
+    }else if(newBreed.weightMin <= 0){
         errors.numberMinWeight = 'The Minimun weight should be higher than 0!'
-    }else if(/* newBreed.weightMin &&  */newBreed.weightMin > 200){
+    }else if(newBreed.weightMin > 200){
         errors.numberMinWeight = `${newBreed.weightMin} kg is a weird min weight`
     }
     if(!newBreed.weightMax){
         errors.numberMaxweight = 'Max weight is required'
-    }else if(/* newBreed.weightMax && */ (newBreed.weightMax <= 0 )){
+    }else if(newBreed.weightMax <= 0 ){
         errors.numberMaxweight = 'The Maximun weight should be higher than 0!'
-    }else if(/* newBreed.weightMax && */ (newBreed.weightMax > 300)){
+    }else if(newBreed.weightMax > 300){
         errors.numberMaxweight = `${newBreed.weightMax} kg is a weird weight for a dog!`
     }else if(parseInt(newBreed.weightMin) > parseInt(newBreed.weightMax)){
         errors.numberMaxweight = 'Max weight must be higher than min weight'
     }
-    if(!newBreed.image){
-        errors.image = 'Image is required'
-    }else if(newBreed.image.length>255){
-        errors.image = 'The link cannot exceed 255 characters'
-    }
-    if(!newBreed.yearsMin){
-        errors.yearsMin = 'Life Span is required'
-    }else if(newBreed.yearsMin < 1 || newBreed.yearsMin >20){
+    // if(!newBreed.image){
+    //     errors.image = 'Image is required'
+    // }else if(newBreed.image.length>255){
+    //     errors.image = 'The link cannot exceed 255 characters'
+    // }
+    if(newBreed.yearsMin < 1 || newBreed.yearsMin >20){
         errors.yearsMin = 'Write a number beetween 1 - 20'
     }
-    if(!newBreed.yearsMax){
-        errors.yearsMax = 'Life Span is required'
-    }else if(newBreed.yearsMax < 1 || newBreed.yearsMax >20){
+    if(newBreed.yearsMax < 1 || newBreed.yearsMax >20){
         errors.yearsMax = 'Write a number beetween 1 - 20'
     }else if(newBreed.yearsMin >= newBreed.yearsMax){
         errors.yearsMax = 'Max life span must be higher than min life span'
-    }/* else if(isNaN(parseInt(newBreed.yearsMax))){
-        errors.yearsMax = 'Life Span should be a number'
-    } */
+    }
     if(!newBreed.temperaments){
         errors.temperaments = 'At least 1 temperament ir required'
     }else if(newBreed.temperaments.length > 8){
@@ -71,7 +65,7 @@ function validate(newBreed){
     return errors
 }
 export default function Form(){
-    const [newBreed, setNewBreed] = useState({name: '', heightMin:'', heightMax: '', weightMin: '', weightMax: '', yearsMin:'', yearsMax: '', image: '', temperament: []});
+    const [newBreed, setNewBreed] = useState({name: '', heightMin:'', heightMax: '', weightMin: '', weightMax: '', yearsMin:'', yearsMax: '', image: 'https://i.pinimg.com/564x/2c/45/e9/2c45e973b329d64ab5f701c7561b6be3.jpg', temperament: []});
     const dispatch = useDispatch();
     const temperaments = useSelector(state => state.temperaments);
     const [errors, setErrors] = useState({});
@@ -113,10 +107,10 @@ export default function Form(){
 
     function handleSubmit(e){
         e.preventDefault();
-        if(newBreed.heightMin > 0 && newBreed.weightMin > 0 && parseInt(newBreed.heightMax) > parseInt(newBreed.heightMin) && parseInt(newBreed.weightMax) > parseInt(newBreed.weightMin) && newBreed.name && /^[a-z ,.'-]+$/i.test(newBreed.name) && parseInt(newBreed.yearsMax) > parseInt(newBreed.yearsMin)){
+        if(newBreed.heightMin > 0 && newBreed.weightMin > 0 && parseInt(newBreed.heightMax) > parseInt(newBreed.heightMin) && parseInt(newBreed.weightMax) > parseInt(newBreed.weightMin) && newBreed.name && /^[a-z ,.'-]+$/i.test(newBreed.name)){
             dispatch(postDog(newBreed));
             alert("🐕 New Breed was successfully created 🐶");
-            setNewBreed({name: '', heightMin:'', heightMax: '', weightMin: '', weightMax: '', yearsMin:'', yearsMax: '', image: '', temperament: []});    
+            setNewBreed({name: '', heightMin:'', heightMax: '', weightMin: '', weightMax: '', yearsMin:'', yearsMax: ''/* , image: '' */, temperament: []});    
         }else{
             alert("Oops, there seems to be a problem. Check the data")
         }
@@ -191,7 +185,7 @@ export default function Form(){
                             <span className="error">{errors.yearsMax}</span>
                         } 
                     </div>
-                    <div className="input-field">
+                    {/* <div className="input-field">
                       <label>Picture</label>
                       <input className="input" placeholder="Add an image URL for your breed..." type="url" name="image" onChange={handleChange} value={newBreed.image} autoComplete="off" />
                       
@@ -199,7 +193,7 @@ export default function Form(){
                         { errors.image && 
                             <span className="error">{errors.image}</span>
                         } 
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label>Temperaments: </label>
                         <div className="temps">
@@ -226,7 +220,7 @@ export default function Form(){
                         </div>
                     </div>
                     <div className="input-field">
-                     <button className="input" type="submit" /* disabled={errors.name || errors.numberMinHeight || errors.numberMaxheight || errors.numberMinWeight || errors.numberMaxweight} */>
+                     <button className="input" type="submit">
                      <span>SUBMIT</span>
                      </button>
                    </div>

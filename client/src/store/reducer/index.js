@@ -10,7 +10,7 @@ const initialState = {
 function weightA(a){
     let arrayA = a.weight.split('-');
     if(parseInt(arrayA[0]) && parseInt(arrayA[1])) return (parseInt(arrayA[0]) + parseInt(arrayA[1]))/2;
-    if(arrayA[0].trim() === 'NaN' && !arrayA[1]) return 1000;
+    if(arrayA[0].trim() === 'NaN' && !arrayA[1]) return 30;
     if(!parseInt(arrayA[0]) || arrayA[0].trim() === 'NaN') return parseInt(arrayA[1]);
     if(!parseInt(arrayA[1]) || arrayA[1].trim() === 'NaN' ) return parseInt(arrayA[0]);
 }
@@ -18,7 +18,7 @@ function weightA(a){
 function weightB(b){
     let arrayB = b.weight.split('-');    
     if(parseInt(arrayB[0]) && parseInt(arrayB[1])) return (parseInt(arrayB[0]) + parseInt(arrayB[1]))/2;
-    if(arrayB[0].trim() === 'NaN' && !arrayB[1]) return 1000;
+    if(arrayB[0].trim() === 'NaN' && !arrayB[1]) return 30;
     if(!parseInt(arrayB[0]) || arrayB[0].trim() === 'NaN') return parseInt(arrayB[1]);
     if(!parseInt(arrayB[1]) || arrayB[1].trim() === 'NaN' ) return parseInt(arrayB[0]);
 }
@@ -87,31 +87,11 @@ function rootReducer(state = initialState, action){
             : action.payload === "HIGH"
             ? info.sort(function(a,b){
                 return weightA(b) - weightB(a)
-                // if(
-                //     Number(a.weight.split("-")[1]) > Number(b.weight.split("-")[1])
-                // ){
-                //     return -1;
-                // }
-                // if(
-                //     Number(b.weight.split("-")[1]) > Number(a.weight.split("-")[1])
-                // ){
-                //     return 1;
-                // }
-                // return 0;
+                //return weightB(b) - weightA(a)
             })
             : info.sort(function(a,b){
-                return weightB(a) - weightA(b)
-                // if(
-                //     Number(a.weight.split("-")[0]) > Number(b.weight.split("-")[0])
-                // ){
-                //     return 1;
-                // }
-                // if(
-                //     Number(b.weight.split("-")[0]) > Number(a.weight.split("-")[0])
-                // ){
-                //     return -1;
-                // }
-                // return 0;
+                //return weightB(a) - weightA(b)
+                return weightA(a) - weightB(b)                
             });
             return {
                 ...state,

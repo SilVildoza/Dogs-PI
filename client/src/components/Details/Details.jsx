@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getById, clean } from "../../store/actions/index";
 import Nav from "../Nav/Nav";
 import './Details.css';
-//import { Link } from "react-router-dom";
+import carga from '../../img/funnygifsbox.com-2020-11-16-10-37-09-3.gif';
 
 
 export default function Details(props){
@@ -28,7 +28,7 @@ export default function Details(props){
         <>
         <Nav />
         <div>
-            {detailDog.length === 0 ? <p Class="loading">Loading...</p>:
+            {detailDog.length === 0 ? <img className='load' alt="Loading" src={carga}/>:
             detailDog.length > 0 &&
             <div class="cards">
                 <div class="card">
@@ -58,8 +58,6 @@ export default function Details(props){
         <br />
         <br />
         <br />
-        {/* <Link to="/home">
-        </Link> */}
         <button className="back" onClick={() => history.goBack()}>BACK</button>
         </>
     )

@@ -11,12 +11,14 @@ router.get('/', async (req, res) => {
         const temperament = temperamentApi.data.map(el => el.temperament).join(", ").split(", ")
     
         temperament.forEach(el=> {
-            Temperament.findOrCreate ({
-                where:{name:el}
-            })
+            if(el !== ''){
+                Temperament.findOrCreate ({
+                    where:{name:el}
+                })
+            }
         });
-        const dogTemperament = await Temperament.findAll();
-        res.send(dogTemperament)
+        const dogTemperament = await Temperament.findAll({order: [['name','asc']]});
+        return res.status(200).send(dogTemperament)
         //console.log(dogTemperament)
         }
         catch(error){
