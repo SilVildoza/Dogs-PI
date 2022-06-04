@@ -1,36 +1,33 @@
+.bigbox {
+  width: 100vw;
+  height: 96vh;
+  overflow: hidden;
+  margin-bottom: 0%;
+}
+
 .bgImg {
   background-image: url("https://www.itl.cat/pngfile/big/244-2440000_wallpaper-of-dog-flower-pet-samoyed-stare-background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  width: 100vw;
-  height: 80vw;
+  width: 100%;
+  height: 100vh;
+  background-size: 100%;
   background-position: center center;
-  background-position-y: bottom;
-  background-color: none;
-
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.contenido {
-  max-width: 700px;
-  margin: auto;
-  text-align: center;
+.titulo {
+  font-size: 60px;
   font-family: 'Poppins', sans-serif;
-
-}
-
-.contenido h1 {
-  color: white;
+  text-align: left;
+  line-height: 2.2;
+  margin-bottom: 40px;
+  margin-left: 15px;
   text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
 }
-
-.contenido .titulo {
-  font-size: 45px;
-  text-transform: none;
-  color: #FF4C29;
-}
-
 .entrar {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
@@ -44,12 +41,19 @@
   box-shadow: inset 0 0 0 0 #dc3d4b;
   transition: ease-out 0.3s;
   font-size: 1rem;
+  bottom:20%;
+  right: 8%;
+  position:absolute;
 }
 
 .entrar:hover {
   box-shadow: inset 0 300px 0 0 #dc3d4b;
   cursor: pointer;
   color: #082032;
+}
 
-
+@media (max-width: 1200px){
+  .bigbox{
+    left: 0;
+  }
 }

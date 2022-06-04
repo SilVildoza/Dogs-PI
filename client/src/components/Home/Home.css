@@ -21,6 +21,7 @@ option {
     font-weight: 300;
     color: white;
 }
+select:focus{ outline: none;}
 
 ::placeholder {
     color: black;
