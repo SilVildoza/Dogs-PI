@@ -1,6 +1,6 @@
-import React, { useEffect/* , useState */ } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getById, clean } from "../../store/actions/index";
 import Nav from "../Nav/Nav";
 import './Details.css';
@@ -8,18 +8,16 @@ import carga from '../../img/funnygifsbox.com-2020-11-16-10-37-09-3.gif';
 
 
 export default function Details(props){
-    const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    //const [/* cambio */, setCambio]= useState(false)
+
     useEffect(()=>{
-        //dispatch(clean())
-        dispatch(getById(id)); // sin return se monta
-        //setCambio(true)
+        dispatch(getById(props.match.params.id)); // sin return se monta       
         return () => {  //con return se desmonta
             dispatch(clean()) //Para que nuestra función se comporte como un componentWillUnmount() tendremos que usar, en el cuerpo de la función, la palabra return. Lo que tenemos que retornar es otra función. Es esta función la que se ejecutará cuando el componente se este por desmontar del DOM.
         }
-    },[dispatch,id]);
+    },[dispatch,props.match.params.id]);
+    
     const detailDog = useSelector(state=>state.detail);
     
     //console.log(detailDog)
@@ -28,6 +26,7 @@ export default function Details(props){
         <>
         <Nav />
         <div>
+            
             {detailDog.length === 0 ? <img className='load' alt="Loading" src={carga}/>:
             detailDog.length > 0 &&
             <div class="cards">

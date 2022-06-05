@@ -1,6 +1,4 @@
-//const { Router } = require ("express");
 const { Dog, Temperament } = require("../db");
-//const router = Router();
 const { getAllDogs } = require("../controlador")
 const axios = require ("axios");
 var express = require("express");
@@ -32,9 +30,8 @@ try{
     const {id} = req.params
     const totalDogs = await getAllDogs()
     if(id){
-        let dogId = await totalDogs.filter(
-            dog => id.length > 8 ? dog.id === id : 
-            (dog.id) === parseInt(id))
+        let dogId = await totalDogs.filter(d => d.id == id)
+
         dogId.length?
         res.status(200).json(dogId):
         res.status(400).send('Dog not found')
@@ -76,5 +73,6 @@ router.post ("/", async (req, res, next) => {
         next(error)
     }
 });
+
 
 module.exports = router;

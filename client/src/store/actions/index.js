@@ -40,10 +40,10 @@ export function getByName(name){
 export function getById(id){
     return async function (dispatch){
         try{
-            var detail = await axios.get(`http://localhost:3001/dogs/${id}`,{});
+            var json = await axios.get(`http://localhost:3001/dogs/${id}`,{});
             return dispatch({
                 type: GET_BY_ID,
-                payload: detail.data,
+                payload: json.data,
             })
         }catch(error){
             console.log(error)
@@ -113,7 +113,9 @@ export function raceFilter(payload){
 }
 
 export function clean(){
-    return {
-        type: CLEAN,
+    return async function (dispatch){
+        return dispatch({
+            type: CLEAN,
+        })
     }
 }

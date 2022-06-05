@@ -19,32 +19,19 @@ export default function Home() {
   const dispatch = useDispatch(); //Esta función se iguala a una constante. Esta constante ahora será la palabra clave cuando queramos despachar una función. Es decir que, contrariamente a useSelector, esta función la usaremos sólo cuando queramos despachar acciones y no necesitemos mostrar información del estado.
   const dogs = useSelector((state) => state.dogs); // useSelector: Esta función nos permite consumir información del estado del componente, la usaremos sólo cuando queramos mostrar información del estado pero no querer despachar acciones. Esta función es comparable con mapStateToProps.
   const temperaments = useSelector((state) => state.temperaments);
+
+  //* PAGINADO
   const [currentPage, setCurrentPage] = useState(1); // useState Nos permite guardar estados en los componentes de funciones. devuelve un arreglo con dos valores. El primero es una variable con el valor del estado y el segundo es una función que se usa para modificar el estado.
   const [, /* orden */ setOrden] = useState("");
   const [dogsPerPage /* setDogsPage */] = useState(8);
-
-  //
-  /**
-   * El índice del último perro es: la página actual (Default: 1), por la cantidad de perros por página (Default: 9).
-   */
   const indexOfLastDog = currentPage * dogsPerPage; // 8
-  //|||||||||||||||||||||||||||||||||||||||||||||||
-  /**
-   * El índice del primer perro es: el índice del último perro (Default: 8), menos la cantidad de perros por página (Default: 9).
-   */
   const indexOfFirstDog = indexOfLastDog - dogsPerPage; // 0
-  //||||||||||||||||||||||||||||||||||||||||||||||||
-  /**
-   * La constante agarra solo las porciones que estan marcadas en los parámetros, que serían el índice del primer perro (0), hasta el índice del último perro (9), por lo tanto quedarían solo 9 perros por página. Renderizando desde el perro numero 0 hasta el perro numero 8, siendo 9 perros en total. Magic.
-   * PÁGINA 1 -> Primer perro 0 <---> Último perro 7.
-   * PÁGINA 2 -> Primer perro 8 <---> Último perro 16.
-   */
   const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
-  //+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   useEffect(() => {
     //useEffect: Esta función viene a reemplazar las funciones del ciclo de vida de los componentes de clase.
     dispatch(getDogs());
@@ -78,6 +65,7 @@ export default function Home() {
     setCurrentPage(1);
     e.target.value = "default";
   }
+  
   return (
     <div>
       <div>

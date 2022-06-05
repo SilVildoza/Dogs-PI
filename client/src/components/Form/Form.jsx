@@ -57,11 +57,6 @@ function validate(newBreed){
     }else if(parseInt(newBreed.yearsMin) >= parseInt(newBreed.yearsMax)){
         errors.yearsMax = 'Max life span must be higher than min life span'
     }
-    /* if(!newBreed.temperaments){
-        errors.temperaments = 'At least 1 temperament ir required'
-    }else if(newBreed.temperaments.length > 8){
-        errors.temperaments = 'Wow, so many temperaments! delete some'
-    } */
     return errors
 }
 export default function Form(){

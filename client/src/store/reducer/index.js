@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 temperaments: action.payload,
-            };
+            };    
         case POST_DOG:
             return {
                 ...state,                
