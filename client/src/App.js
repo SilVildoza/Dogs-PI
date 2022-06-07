@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React from "react";
 import Form from './components/Form/Form';
 import LandingPage from './components/Landing/LandingPage';
@@ -11,12 +11,12 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <React.Fragment>
+      <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/add" component={Form} />
         <Route path="/home/:id" component={Details} />
-      </React.Fragment>
+      </Switch>
     </div>
     </BrowserRouter>
   );

@@ -19,8 +19,8 @@ export default function Details(props){
     },[dispatch,props.match.params.id]);
     
     const detailDog = useSelector(state=>state.detail);
-    
-    //console.log(detailDog)
+    console.log(getById)
+    console.log(detailDog)
    
     return (
         <>
@@ -29,14 +29,14 @@ export default function Details(props){
             
             {detailDog.length === 0 ? <img className='load' alt="Loading" src={carga}/>:
             detailDog.length > 0 &&
-            <div class="cards">
-                <div class="card">
-                    <h2 class="card-title">{detailDog[0].name}</h2>
+            <div className="cards">
+                <div className="card">
+                    <h2 className="card-title">{detailDog[0].name}</h2>
                     <img 
                     src={detailDog[0].image}
                     alt='img not found'                    
                     />
-                <div class="card-desc">
+                <div className="card-desc">
                     <h4>Temperaments:</h4>
                     <p>{detailDog[0].temperament}</p>
                     <br/>
