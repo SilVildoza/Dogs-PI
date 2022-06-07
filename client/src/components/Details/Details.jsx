@@ -19,7 +19,7 @@ export default function Details(props){
     },[dispatch,props.match.params.id]);
     
     const detailDog = useSelector(state=>state.detail);
-    console.log(getById)
+    
     console.log(detailDog)
    
     return (

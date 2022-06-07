@@ -47,6 +47,10 @@ export function getById(id){
             })
         }catch(error){
             console.log(error)
+           /*  return dispatch({
+                type: GET_BY_ID,
+                payload:{name:404}
+            }) */
         }
     }
 }
