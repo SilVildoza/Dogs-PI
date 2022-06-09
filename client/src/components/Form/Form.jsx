@@ -193,13 +193,13 @@ export default function Form(){
                         <label>Temperaments: </label>
                         <div className="temps">
                             <select defaultValue="default" onChange={(e)=>{handleSelect(e)}}>
-                                <option value="default" disabled="default">Choose at least 1 temperament</option>
+                                <option value="default" disabled="default">Choose their temperament</option>
                                 {temperaments && temperaments.map(d => (
                                    <option key={d.name} value={d.name}>
                                   {d.name}
                               </option>
                                  ))}
-                                 {errors.temperaments && (<p className="error">{errors.temperaments}</p>)}
+                                 {/* {errors.temperaments && (<p className="error">{errors.temperaments}</p>)} */}
                             </select>
                             <ul>
                             <label>Selected temperaments: </label>

@@ -12,9 +12,9 @@ export default function Details(props){
     const history = useHistory();
 
     useEffect(()=>{
-        dispatch(getById(props.match.params.id)); // sin return se monta       
-        return () => {  //con return se desmonta
-            dispatch(clean()) //Para que nuestra función se comporte como un componentWillUnmount() tendremos que usar, en el cuerpo de la función, la palabra return. Lo que tenemos que retornar es otra función. Es esta función la que se ejecutará cuando el componente se este por desmontar del DOM.
+        dispatch(getById(props.match.params.id));        
+        return () => {  
+            dispatch(clean()) 
         }
     },[dispatch,props.match.params.id]);
     

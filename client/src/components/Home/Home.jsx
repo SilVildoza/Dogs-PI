@@ -5,6 +5,7 @@ import {
   orderFilter,
   raceFilter,
   filterTemperaments,
+  cleanSearch,
 } from "../../store/actions";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
@@ -15,13 +16,13 @@ import "./Home.css";
 import carga from "../../img/funnygifsbox.com-2020-11-16-10-37-09-3.gif";
 
 export default function Home() {
-  //*Los Hooks son algunas herramientas adicionales de React que nos permiten trabajar con componentes de funciones. Estos se encargan de copiar todos los recursos que tienen los componentes de clase pero en los de funciones.
-  const dispatch = useDispatch(); //Esta función se iguala a una constante. Esta constante ahora será la palabra clave cuando queramos despachar una función. Es decir que, contrariamente a useSelector, esta función la usaremos sólo cuando queramos despachar acciones y no necesitemos mostrar información del estado.
-  const dogs = useSelector((state) => state.dogs); // useSelector: Esta función nos permite consumir información del estado del componente, la usaremos sólo cuando queramos mostrar información del estado pero no querer despachar acciones. Esta función es comparable con mapStateToProps.
+  
+  const dispatch = useDispatch(); 
+  const dogs = useSelector((state) => state.dogs); 
   const temperaments = useSelector((state) => state.temperaments);
 
   //* PAGINADO
-  const [currentPage, setCurrentPage] = useState(1); // useState Nos permite guardar estados en los componentes de funciones. devuelve un arreglo con dos valores. El primero es una variable con el valor del estado y el segundo es una función que se usa para modificar el estado.
+  const [currentPage, setCurrentPage] = useState(1); 
   const [, /* orden */ setOrden] = useState("");
   const [dogsPerPage /* setDogsPage */] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage; // 8
@@ -33,9 +34,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    //useEffect: Esta función viene a reemplazar las funciones del ciclo de vida de los componentes de clase.
     dispatch(getDogs());
     dispatch(getTemperaments());
+    return()=>{
+      dispatch(cleanSearch())
+    }
   }, [dispatch]);
 
   function handleClick(e) {

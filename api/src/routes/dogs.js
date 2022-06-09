@@ -1,15 +1,15 @@
 const { Dog, Temperament } = require("../db");
 const { getAllDogs } = require("../controlador")
-const axios = require ("axios");
+//const axios = require ("axios");
+//const {Op}=require("sequelize")
 var express = require("express");
 var router = express.Router();
-
 
 
 router.get("/", async (req, res, next) => {
     try{
         const {name} = req.query;
-    let totalDogs = await getAllDogs();
+        let totalDogs = await getAllDogs();
 
     if (name) {
         let dogName = await totalDogs.filter (el => el.name.toLowerCase().includes(name.toLowerCase()));

@@ -1,4 +1,4 @@
-import { GET_DOGS, GETBYNAME, GET_BY_ID, GET_TEMPERAMENTS,POST_DOG, FILTER_TEMPERAMENTS, CLEAN, ORDER_FILTER, RACE_FILTER } from "../actions/index";
+import { GET_DOGS, GETBYNAME, GET_BY_ID, GET_TEMPERAMENTS,POST_DOG, FILTER_TEMPERAMENTS, CLEAN, CLEAN_SEARCH, ORDER_FILTER, RACE_FILTER } from "../actions/index";
 
 const initialState = {
     dogs: [],
@@ -118,6 +118,11 @@ function rootReducer(state = initialState, action){
                 ...state,
                 detail: []
             };
+            case CLEAN_SEARCH:
+                return {
+                    ...state,
+                    dogs: []
+                };    
         default:
             return state;
     }

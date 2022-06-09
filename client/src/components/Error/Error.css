@@ -9,4 +9,13 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: -1;
+}
+
+.volver {
+    color: white;
+    background-color: #082032;
+    margin-left: 5px;
+    margin-right: 5px;
+    z-index: 11;
 }

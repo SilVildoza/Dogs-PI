@@ -1,5 +1,5 @@
 import axios from "axios";
-export const GET_DOGS= "GET_DOS";
+export const GET_DOGS= "GET_DOGS";
 export const GETBYNAME = "GETBYNAME";
 export const GET_BY_ID = "GET_BY_ID";
 export const GET_TEMPERAMENTS ="GET_TEMPERAMENTS";
@@ -8,6 +8,7 @@ export const FILTER_TEMPERAMENTS = "FILTER_TEMPERAMENTS";
 export const ORDER_FILTER = "ORDER_FILTER";
 export const RACE_FILTER = "RACE_FILTER";
 export const CLEAN = "CLEAN";
+export const CLEAN_SEARCH = "CLEAN_SEARCH";
 
 export function getDogs(){
     return async function (dispatch){
@@ -47,10 +48,6 @@ export function getById(id){
             })
         }catch(error){
             console.log(error)
-           /*  return dispatch({
-                type: GET_BY_ID,
-                payload:{name:404}
-            }) */
         }
     }
 }
@@ -120,6 +117,14 @@ export function clean(){
     return async function (dispatch){
         return dispatch({
             type: CLEAN,
+        })
+    }
+}
+
+export function cleanSearch(){
+    return async function (dispatch){
+        return dispatch({
+            type: CLEAN_SEARCH,
         })
     }
 }
