@@ -44,11 +44,6 @@ function validate(newBreed){
     }else if(parseInt(newBreed.weightMin) >= parseInt(newBreed.weightMax)){
         errors.numberMaxweight = 'Max weight must be higher than min weight'
     }
-    // if(!newBreed.image){
-    //     errors.image = 'Image is required'
-    // }else if(newBreed.image.length>255){
-    //     errors.image = 'The link cannot exceed 255 characters'
-    // }
     if(newBreed.yearsMin < 1 || newBreed.yearsMin >20){
         errors.yearsMin = 'Write a number beetween 1 - 20'
     }
@@ -83,13 +78,14 @@ export default function Form(){
     }
 
     function handleSelect(e){
-        let hayTemp = newBreed.temperament.find(temp => temp === e.target.value)
-        if(!hayTemp){
+        if(newBreed.temperament.includes(e.target.value)){
+            alert ("Temperament already selected...!");
+        }else{
             setNewBreed({
                 ...newBreed,
                 temperament: [...newBreed.temperament,e.target.value]
             });
-        } else alert ("Temperament already selected...!");
+        }       
         e.target.value = 'default'
     };
 
@@ -180,15 +176,7 @@ export default function Form(){
                             <span className="error">{errors.yearsMax}</span>
                         } 
                     </div>
-                    {/* <div className="input-field">
-                      <label>Picture</label>
-                      <input className="input" placeholder="Add an image URL for your breed..." type="url" name="image" onChange={handleChange} value={newBreed.image} autoComplete="off" />
-                      
-                      <br />
-                        { errors.image && 
-                            <span className="error">{errors.image}</span>
-                        } 
-                    </div> */}
+                    
                     <div className="form-group">
                         <label>Temperaments: </label>
                         <div className="temps">
@@ -198,8 +186,7 @@ export default function Form(){
                                    <option key={d.name} value={d.name}>
                                   {d.name}
                               </option>
-                                 ))}
-                                 {/* {errors.temperaments && (<p className="error">{errors.temperaments}</p>)} */}
+                                ))}                              
                             </select>
                             <ul>
                             <label>Selected temperaments: </label>
@@ -224,3 +211,56 @@ export default function Form(){
         </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
+/* notitas:
+
+en el handleSelect:
+/* let hayTemp = newBreed.temperament.find(temp => temp === e.target.value)
+        if(!hayTemp){
+            setNewBreed({
+                ...newBreed,
+                temperament: [...newBreed.temperament,e.target.value]
+            });
+        } else alert ("Temperament already selected...!"); 
+
+en la funcion validate
+
+ if(!newBreed.temperament){
+        errors.temperaments = 'Select at least 1 temperament'
+    }
+
+    al final del div de temperaments
+
+    {errors.temperaments && (<p className="error">{errors.temperaments}</p>)} 
+
+    en el botón
+
+    /* disabled={newBreed.temperament.length === 0 || Object.keys(errors).length > 0} */
+
+
+    // Los cambios que hice en imagen
+
+    // if(!newBreed.image){
+    //     errors.image = 'Image is required'
+    // }else if(newBreed.image.length>255){
+    //     errors.image = 'The link cannot exceed 255 characters'
+    // }
+
+    /* <div className="input-field">
+                      <label>Picture</label>
+                      <input className="input" placeholder="Add an image URL for your breed..." type="url" name="image" onChange={handleChange} value={newBreed.image} autoComplete="off" />
+                      
+                      <br />
+                        { errors.image && 
+                            <span className="error">{errors.image}</span>
+                        } 
+                    </div> */
