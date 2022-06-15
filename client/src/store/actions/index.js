@@ -75,7 +75,7 @@ export function postDog({
 }){
     return async function(dispatch){
         await axios.post("http://localhost:3001/dogs/", {
-            name,
+            name: name[0].toUpperCase()+name.toLowerCase().slice(1),
             height: heightMin + " - " + heightMax,
             weight: weightMin + " - " + weightMax,
             lifeSpan: yearsMin + " - " + yearsMax + " years",
